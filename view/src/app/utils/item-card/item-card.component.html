@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-4">
+        <img [src]="item.imageUrl" class="img-fluid" width="300" height="300">
+      </div>
+      <div class="col-sm-8">
+        <h4>{{item.itemName}}</h4>
+        <small><b>Carton Price :- $ {{item.priceOFSingleCartoon}}</b></small><br>
+        <small><b>Units in Carton :- {{item.noOfUnitsInCartoon}}</b></small>
+        <ul>
+          <li>If you purchased single unit, the price acquired using the carton price multiplied by an increase of {{item.increasedPrecentage * 100}}%</li>
+          <li>If you purchased {{item.minCartoonAmountToDiscount}} carton or more, you will receive {{item.discountPrecentage * 100}}% discount off the carton price</li>
+        </ul>
+        <div class="row">
+          <div class="col-sm-6">
+            <app-plus-minus-button
+              [item]="item"
+              (getAmount)="setAmount($event)"
+              [isCarton]="true"
+            ></app-plus-minus-button>
+          </div>
+          <div class="col-sm-6">
+            <app-plus-minus-button
+              [item]="item"
+              (getAmount)="setAmount($event)"
+              [isCarton]="false"
+            ></app-plus-minus-button>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>

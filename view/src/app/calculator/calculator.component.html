@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-header">
+    <h3>Calculator</h3>
+    <small>This is your shopping cart. This will display what are the items you purchased</small>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Item Image</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let calculatedItem of calculatedITemList">
+            <td>
+              <img [src]="calculatedItem.item.imageUrl">
+            </td>
+            <td>{{calculatedItem.item.itemName}}</td>
+            <td>{{calculatedItem.amount}}</td>
+            <td>$ {{calculatedItem.price}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Total Price</td>
+            <td></td>
+            <td></td>
+            <td>$ {{totalPrice}}</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

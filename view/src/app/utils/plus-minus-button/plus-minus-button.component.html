@@ -1,0 +1,6 @@
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-danger" (click)="setAmountReduce()">-</button>
+  <input *ngIf="isCarton" type="number" class="form-control" [(ngModel)]="amount" placeholder="carton amount">
+  <input *ngIf="isCarton == false" type="number" class="form-control" [(ngModel)]="amount" placeholder="single amount">
+  <button type="button" class="btn btn-success" (click)="setAmountAdd()">+</button>
+</div>

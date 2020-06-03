@@ -1,0 +1,21 @@
+version: "3"
+services:
+  api:
+    image: api
+    ports:
+      - "8080:8080"
+    networks:
+      - item-assessment
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:8
+    networks:
+      - item-assessment
+    environment:
+      - MYSQL_ROOT_PASSWORD=Demo_pwd9
+      - MYSQL_DATABASE=assessment
+
+networks:
+  item-assessment:
