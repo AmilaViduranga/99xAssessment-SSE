@@ -69,8 +69,10 @@ export class HomeComponent implements OnInit {
     this.service.get(environment.itemsApi + "calculate_price/single/" + value.item.id + "/" + value.amount, false).subscribe(response => {
       if(isPurchasedBefore) {
         this.calculatedItemList.forEach(calculatedItem => {
-          calculatedItem.amount = value.amount;
-          calculatedItem.price = response.price;
+          if(calculatedItem.item.id == value.item.id) {
+            calculatedItem.amount = value.amount;
+            calculatedItem.price = response.price;
+          }
         })
       } else {
         let newCalculatedItem = new Calculator();
@@ -79,18 +81,18 @@ export class HomeComponent implements OnInit {
         newCalculatedItem.price = response.price;
         this.calculatedItemList.push(newCalculatedItem);
       }
-      // let requestBody = new Array<TotalPriceRequest>();
-      // this.totalPrice = 0;
-      // this.calculatedItemList.forEach(calculatedItem => {
-      //   let request = new TotalPriceRequest();
-      //   request.itemId = calculatedItem.item.id;
-      //   request.amount = calculatedItem.amount;
-      //   this.totalPrice = this.totalPrice + calculatedItem.price;
-      //   requestBody.push(request);
-      // })
-      // this.service.post(environment.itemsApi + "calculate_price/all", false, requestBody).subscribe(responseTwo => {
-      //   this.totalPrice = responseTwo.price;
-      // })
+      let requestBody = new Array<TotalPriceRequest>();
+      //this.totalPrice = 0;
+      this.calculatedItemList.forEach(calculatedItem => {
+        let request = new TotalPriceRequest();
+        request.itemId = calculatedItem.item.id;
+        request.amount = calculatedItem.amount;
+        //this.totalPrice = this.totalPrice + calculatedItem.price;
+        requestBody.push(request);
+      })
+      this.service.post(environment.itemsApi + "calculate_price/all", false, requestBody).subscribe(responseTwo => {
+        this.totalPrice = responseTwo.price;
+      })
     })
   }
 }
