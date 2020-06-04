@@ -47,7 +47,7 @@ After installation above things then you can run the front end app.
 ![enter image description here](https://raw.githubusercontent.com/AmilaViduranga/99xAssessment-SSE/master/application%20screenshots/home.png)
  - Add Item
  
-![enter image description here](https://raw.githubusercontent.com/AmilaViduranga/99xAssessment-SSE/master/application%20screenshots/purchased-item.png)
+![enter image description here](https://raw.githubusercontent.com/AmilaViduranga/99xAssessment-SSE/master/application%20screenshots/insert-new-item.png)
 
 - Edit Item
 ![enter image description here](https://raw.githubusercontent.com/AmilaViduranga/99xAssessment-SSE/master/application%20screenshots/edit-item.png)
