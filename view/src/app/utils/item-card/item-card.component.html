@@ -12,6 +12,14 @@
           <li>If you purchased single unit, the price acquired using the carton price multiplied by an increase of {{item.increasedPrecentage * 100}}%</li>
           <li>If you purchased {{item.minCartoonAmountToDiscount}} carton or more, you will receive {{item.discountPrecentage * 100}}% discount off the carton price</li>
         </ul>
+        <div class="btn-group pull-right">
+          <button class="btn btn-primary" (click)="isEdit()">
+            <i class="fa fa-edit"></i>
+          </button>
+          <!-- <button class="btn btn-danger" (click)="isRemove()">
+            <i class="fa fa-remove"></i>
+          </button> -->
+        </div>
         <div class="row">
           <div class="col-sm-6">
             <app-plus-minus-button

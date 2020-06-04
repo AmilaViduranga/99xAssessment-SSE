@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { UtilsModule } from './utils/utils.module';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +25,8 @@ import { BaseService } from './base.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    UtilsModule
+    UtilsModule,
+    FormsModule
   ],
   providers: [
     BaseService

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../model/item.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { Item } from '../model/item.model';
 export class AddItemComponent implements OnInit {
 
   @Input() item:Item;
+  @Output() passItemInfo: EventEmitter<any> = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
@@ -16,6 +17,14 @@ export class AddItemComponent implements OnInit {
 
   setValue(value) {
     this.item[value.key] = value.value;
+  }
+
+  getNewItem() {
+    this.passItemInfo.emit({
+      item: this.item
+    })
+    this.item = new Item();
+    
   }
 
 }

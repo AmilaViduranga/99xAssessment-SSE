@@ -10,6 +10,7 @@ export class ItemCardComponent implements OnInit {
 
   @Input() item: Item;
   @Output() getAmount:EventEmitter<any> = new EventEmitter<any>();
+  @Output() editItem: EventEmitter<any> = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
@@ -17,6 +18,16 @@ export class ItemCardComponent implements OnInit {
 
   setAmount(value) {
     this.getAmount.emit(value);
+  }
+
+  isEdit() {
+    this.editItem.emit({
+      item: this.item
+    })
+  }
+
+  isRemove() {
+
   }
 
 }

@@ -10,6 +10,7 @@ export class ItemListComponent implements OnInit {
 
   @Input() items: Array<Item>;
   @Output() getAmount: EventEmitter<any> = new EventEmitter<any>();
+  @Output() getEditItem: EventEmitter<any> = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
@@ -17,6 +18,10 @@ export class ItemListComponent implements OnInit {
 
   setAmount(value) {
     this.getAmount.emit(value);
+  }
+
+  passEditItem(value) {
+    this.getEditItem.emit(value);
   }
 
 }

@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadModalNewItem() {
+    this.newItem = new Item();
     $('#newItem').modal("show");
   }
 
@@ -94,5 +95,58 @@ export class HomeComponent implements OnInit {
         this.totalPrice = responseTwo.price;
       })
     })
+  }
+
+  changeAmount(value) {
+    let changedItem: Calculator = value.item;
+    this.service.get(environment.itemsApi + "calculate_price/single/" + changedItem.item.id + "/" + changedItem.amount, false).subscribe(response => {
+      this.calculatedItemList.forEach(calculatedItem => {
+        if(calculatedItem.item.id == changedItem.item.id) {
+          calculatedItem.amount = changedItem.amount;
+          calculatedItem.price = response.price;
+        }
+      }) 
+      let requestBody = new Array<TotalPriceRequest>();
+      //this.totalPrice = 0;
+      this.calculatedItemList.forEach(calculatedItem => {
+        let request = new TotalPriceRequest();
+        request.itemId = calculatedItem.item.id;
+        request.amount = calculatedItem.amount;
+        //this.totalPrice = this.totalPrice + calculatedItem.price;
+        requestBody.push(request);
+      })
+      this.service.post(environment.itemsApi + "calculate_price/all", false, requestBody).subscribe(responseTwo => {
+        this.totalPrice = responseTwo.price;
+      })
+    })
+  }
+
+  removeItem(value) {
+    let removeItem: Calculator = value.item;
+    this.calculatedItemList = this.calculatedItemList.filter(obj => obj !== removeItem);
+    let requestBody = new Array<TotalPriceRequest>();
+    //this.totalPrice = 0;
+    this.calculatedItemList.forEach(calculatedItem => {
+      let request = new TotalPriceRequest();
+      request.itemId = calculatedItem.item.id;
+      request.amount = calculatedItem.amount;
+      //this.totalPrice = this.totalPrice + calculatedItem.price;
+      requestBody.push(request);
+    })
+    this.service.post(environment.itemsApi + "calculate_price/all", false, requestBody).subscribe(responseTwo => {
+      this.totalPrice = responseTwo.price;
+    })
+  }
+
+  getNewItemDetails(value) {
+    this.service.post(environment.itemsApi, true, value.item).subscribe(response => {
+      this.loadAvailableItems();
+      $('#newItem').modal("hide");
+    })
+  }
+
+  getEditItemInfo(value) {
+    this.newItem = value.item;
+    $('#newItem').modal("show");
   }
 }

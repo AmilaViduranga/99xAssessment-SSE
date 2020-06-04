@@ -12,19 +12,28 @@
             <th scope="col">Item Name</th>
             <th scope="col">Amount</th>
             <th scope="col">Price</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let calculatedItem of calculatedITemList">
             <td>
-              <img [src]="calculatedItem.item.imageUrl">
+              <img [src]="calculatedItem.item.imageUrl" class="img-fluid">
             </td>
             <td>{{calculatedItem.item.itemName}}</td>
             <td>{{calculatedItem.amount}}</td>
             <td>$ {{calculatedItem.price}}</td>
+            <td class="btn-group">
+              <button class="btn btn-primary" (click)="isEdit(calculatedItem)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button class="btn btn-danger" (click)="isRemove(calculatedItem)">
+                <i class="fa fa-remove"></i>
+              </button>
+            </td>
           </tr>
         </tbody>
-        <tfoot>
+        <tfoot *ngIf="calculatedITemList.length > 0">
           <tr>
             <td>Total Price</td>
             <td></td>
@@ -36,3 +45,29 @@
     </div>
   </div>
 </div>
+
+<section>
+  <div class="modal" tabindex="-1" role="dialog" id="editAmount">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="editAmount">Edited Amount</label>
+            <input type="number" class="form-control" id="editAmount" aria-describedby="editAmountHelp" placeholder="Enter amount" name="editedAmount" [(ngModel)]="selectedItem.amount">
+            <small id="editAmountHelp" class="form-text text-muted">You have to give your new amount</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="editAmount()">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

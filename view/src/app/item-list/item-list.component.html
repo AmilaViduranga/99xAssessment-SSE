@@ -8,6 +8,7 @@
       *ngFor="let item of items"
       [item]="item"
       (getAmount)="setAmount($event)"
+      (editItem)="passEditItem($event)"
     ></app-item-card>
   </div>
 </div>

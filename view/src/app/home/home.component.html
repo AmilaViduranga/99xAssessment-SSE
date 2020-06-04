@@ -9,12 +9,15 @@
           <app-item-list
             [items]="avilableItems"
             (getAmount)="passAmount($event)"
+            (getEditItem)="getEditItemInfo($event)"
           ></app-item-list>
         </div>
         <div class="col-sm-5">
           <app-calculator
             [calculatedITemList]="calculatedItemList"
             [totalPrice]="totalPrice"
+            (changeAmountPurchased)="changeAmount($event)"
+            (removeItem)="removeItem($event)"
           ></app-calculator>
         </div>
       </div>
@@ -28,20 +31,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add New Item</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Item Details</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <app-add-item
-            [item]="newItem"
-          ></app-add-item>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+        <app-add-item
+          [item]="newItem"
+          (passItemInfo)="getNewItemDetails($event)"
+        ></app-add-item>
       </div>
     </div>
   </div>
