@@ -1,3 +1,3 @@
 From openjdk:8
-copy ./target/api-0.0.1-SNAPSHOT.jar api-0.0.1-SNAPSHOT.jar
-CMD ["java","-jar","api-0.0.1-SNAPSHOT.jar"]
+copy ./target/99x-assessment-api-0.0.1-SNAPSHOT.jar 99x-assessment-api-0.0.1-SNAPSHOT.jar
+CMD ["java","-jar","99x-assessment-api-0.0.1-SNAPSHOT.jar"]

@@ -1,21 +1,35 @@
-version: "3"
+version: "3.3"
 services:
-  api:
-    image: api
+  99x-assessment-api:
+    image: 99x-assessment-api
     ports:
       - "8080:8080"
     networks:
       - item-assessment
     depends_on:
-      - mysqldb
+      - db
+    environment:
+      - DATABASE_HOST=localhost
+      - DATABASE_USER=root
+      - DATABASE_NAME=assessment
+      - DATABASE_PORT=3306
 
-  mysqldb:
-    image: mysql:8
+  db:
+    image: mysql:5.7
+    restart: always
     networks:
       - item-assessment
     environment:
-      - MYSQL_ROOT_PASSWORD=Demo_pwd9
-      - MYSQL_DATABASE=assessment
+      MYSQL_DATABASE: 'assessment'
+      MYSQL_USER: 'root'
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - my-db:/var/lib/mysql
+volumes:
+  my-db:
 
 networks:
   item-assessment:
