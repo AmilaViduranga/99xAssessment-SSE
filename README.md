@@ -41,3 +41,19 @@ After installation above things then you can run the front end app.
  - Then you have to run ```npm install``` in terminal 
  - Then you have to run ```ng serve --aot``` or  ```ng serve``` command
  - Then open any browser and type ```http://localhost:4200``` in address bar.
+ 
+ ## Scrennshots of application
+ - Home Page
+![enter image description here](https://raw.githubusercontent.com/AmilaViduranga/99xAssessment-SSE/master/application%20screenshots/home.png)
+ - Add Item
+ 
+![enter image description here](https://raw.githubusercontent.com/AmilaViduranga/99xAssessment-SSE/master/application%20screenshots/purchased-item.png)
+
+- Edit Item
+![enter image description here](https://raw.githubusercontent.com/AmilaViduranga/99xAssessment-SSE/master/application%20screenshots/edit-item.png)
+
+- Edit Purchased Item
+![enter image description here](https://raw.githubusercontent.com/AmilaViduranga/99xAssessment-SSE/master/application%20screenshots/edit-purchased-items.png)
+
+- Purchased Item
+![enter image description here](https://raw.githubusercontent.com/AmilaViduranga/99xAssessment-SSE/master/application%20screenshots/purchased-item.png)
