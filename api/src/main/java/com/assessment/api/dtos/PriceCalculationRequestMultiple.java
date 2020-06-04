@@ -1,5 +1,9 @@
 package com.assessment.api.dtos;
 
+/*
+ * description :-  This class is created to give support to deserialize request that sent for multiple item calculation
+ * developed by :- Amila Vidurange
+ */
 public class PriceCalculationRequestMultiple {
     private Long itemId;
     private Integer amount;
