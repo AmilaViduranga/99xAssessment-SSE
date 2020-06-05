@@ -9,8 +9,8 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /*
-* description :- This is swagger configuration. You can navigate to swagger by http://<host>:<port>/swagger-ui.html
-* develop :- Amila Viduranga
+* This is swagger configuration. You can navigate to swagger by http://<host>:<port>/swagger-ui.html
+* @author Amila Viduranga
 * */
 @Configuration
 @EnableSwagger2
