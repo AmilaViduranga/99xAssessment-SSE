@@ -96,7 +96,7 @@ public class ItemController {
     }
 
     /*
-     * his endpoint will calculate price of a multiple items purchased
+     * This endpoint will calculate price of a multiple items purchased
      * @param itemList array of priceCalculationRequestMultiple items
      * @return return response of calculated price
      * @url http://<host>:<port>/items/calculate_price/all

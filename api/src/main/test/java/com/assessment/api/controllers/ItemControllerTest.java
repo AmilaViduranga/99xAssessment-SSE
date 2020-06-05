@@ -1,7 +1,5 @@
 package com.assessment.api.controllers;
 
-import com.assessment.api.controllers.ItemController;
-import com.assessment.api.dtos.PriceCalculationResponseDTO;
 import com.assessment.api.models.Item;
 import com.assessment.api.services.ItemService;
 import com.fasterxml.jackson.core.JsonProcessingException;

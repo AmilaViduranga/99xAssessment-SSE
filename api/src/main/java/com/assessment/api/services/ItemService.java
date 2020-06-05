@@ -11,11 +11,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/*
+ * This is service explanation that is use to handle all the business logic of price calculation
+ * @author Amila Viduranga
+ */
 @Service
 public class ItemService implements PriceCalculations{
     @Autowired
     ItemRepository repository;
 
+    /*
+     * calculate single item price that has purchased
+     * @param item the item object that is needed to get calculation o price
+     * @param amount the amount that customer purchased
+     * @return calculated price of single item
+     * @author Amila Viduranga
+     */
     @Override
     public Double calculateItemPrice(Item item, Integer amount) {
         Double totalPrice = 0.0;
@@ -35,6 +46,12 @@ public class ItemService implements PriceCalculations{
         return totalPrice;
     }
 
+    /*
+     * calculate once multiple items that has purchased
+     * @param list list of items that has been purchased by the customer
+     * @return calculated total value of multiple item price
+     * @author Amila Viduranga
+     */
     @Override
     public Double calculateTotalPrice(List<TotalPrice> list) {
         Double totalPrice = 0.0;
@@ -44,6 +61,11 @@ public class ItemService implements PriceCalculations{
         return totalPrice;
     }
 
+    /*
+     * get all the items that is available in the system
+     * @return return all the items that is available in system
+     * @author Amila Viduranga
+     */
     public List<Item> getAllItems() {
         List<Item> itemList = repository.findAll();
         if(itemList.size() > 0) {
@@ -53,6 +75,12 @@ public class ItemService implements PriceCalculations{
         }
     }
 
+    /*
+     * get single item by item id
+     * @param id the id value of the item that is needed to get
+     * @return return item that is match with given id
+     * @author Amila Viduranga
+     */
     public Item getItemById(Long id) throws RecordNotFoundException {
         Optional<Item> item = repository.findById(id);
         if(item.isPresent()) {
@@ -62,6 +90,11 @@ public class ItemService implements PriceCalculations{
         }
     }
 
+    /*
+     * delete the item by given id
+     * @param id id value of the item that is needed to delete
+     * @author Amila Viduranga
+     */
     public void deleteItemById(Long id) throws RecordNotFoundException {
         Optional<Item> item = repository.findById(id);
 
@@ -72,6 +105,12 @@ public class ItemService implements PriceCalculations{
         }
     }
 
+    /*
+     * create or update the item
+     * @param entity the item that is need to create or update
+     * @return return created / updated item
+     * @author Amila Viduranga
+     */
     public Item createOrUpdateItem(Item entity) throws RecordNotFoundException {
         if(entity.getId()!=null)  {
             Optional<Item> item = repository.findById(entity.getId());

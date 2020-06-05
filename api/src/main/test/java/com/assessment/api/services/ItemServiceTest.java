@@ -3,7 +3,6 @@ package com.assessment.api.services;
 import com.assessment.api.models.Item;
 import com.assessment.api.models.TotalPrice;
 import com.assessment.api.repository.ItemRepository;
-import com.assessment.api.services.ItemService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
