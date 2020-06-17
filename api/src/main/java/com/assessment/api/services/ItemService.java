@@ -66,6 +66,7 @@ public class ItemService implements IntItemService{
      * @return return all the items that is available in system
      * @author Amila Viduranga
      */
+    @Override
     public List<Item> getAllItems() {
         List<Item> itemList = repository.findAll();
         if(itemList.size() > 0) {
@@ -81,6 +82,7 @@ public class ItemService implements IntItemService{
      * @return return item that is match with given id
      * @author Amila Viduranga
      */
+    @Override
     public Item getItemById(Long id) throws RecordNotFoundException {
         Optional<Item> item = repository.findById(id);
         if(item.isPresent()) {
@@ -95,6 +97,7 @@ public class ItemService implements IntItemService{
      * @param id id value of the item that is needed to delete
      * @author Amila Viduranga
      */
+    @Override
     public void deleteItemById(Long id) throws RecordNotFoundException {
         Optional<Item> item = repository.findById(id);
 
@@ -111,6 +114,7 @@ public class ItemService implements IntItemService{
      * @return return created / updated item
      * @author Amila Viduranga
      */
+    @Override
     public Item createOrUpdateItem(Item entity) throws RecordNotFoundException {
         if(entity.getId()!=null)  {
             Optional<Item> item = repository.findById(entity.getId());
