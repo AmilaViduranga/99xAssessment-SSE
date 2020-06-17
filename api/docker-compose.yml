@@ -1,35 +1,29 @@
 version: "3.3"
 services:
-  99x-assessment-api:
-    image: 99x-assessment-api
-    ports:
-      - "8080:8080"
-    networks:
-      - item-assessment
-    depends_on:
-      - db
+  mysql-assignment:
+    container_name: mysql-assignment
+    image: mysql:5.6
     environment:
-      - DATABASE_HOST=localhost
-      - DATABASE_USER=root
-      - DATABASE_NAME=assessment
-      - DATABASE_PORT=3306
-
-  db:
-    image: mysql:5.7
-    restart: always
-    networks:
-      - item-assessment
-    environment:
-      MYSQL_DATABASE: 'assessment'
-      MYSQL_USER: 'root'
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - MYSQL_DATABASE=assessment
+      - MYSQL_USER=demon
+      - MYSQL_PASSWORD=demon
     ports:
       - 3306:3306
-    expose:
-      - 3306
-    volumes:
-      - my-db:/var/lib/mysql
-volumes:
-  my-db:
 
-networks:
-  item-assessment:
+  assessment-api:
+    container_name: assessment-api
+    image: assessment-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql-assignment
+    environment:
+      - DATABASE_HOST=mysql-assignment
+      - DATABASE_USER=demon
+      - DATABASE_PASSWORD=demon
+      - DATABASE_NAME=assessment
+      - DATABASE_PORT=3306
+    build:
+      context: ./
+      dockerfile: Dockerfile

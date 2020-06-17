@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.assessment</groupId>
-	<artifactId>99x-assessment-api</artifactId>
+	<artifactId>assessment-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>99x-assessment-api</name>
+	<name>assessment-api</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -103,6 +103,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>assessment-api</finalName>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

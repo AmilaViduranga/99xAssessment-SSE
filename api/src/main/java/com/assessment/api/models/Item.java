@@ -19,7 +19,7 @@ public class Item {
     @Column(name = "cartoon_price", nullable = false)
     private Double priceOFSingleCartoon;
 
-    @Column(name = "image_url")
+    @Column(name = "image_url", length=50000)
     private String imageUrl;
 
     @Column(name = "adding_precentage")
