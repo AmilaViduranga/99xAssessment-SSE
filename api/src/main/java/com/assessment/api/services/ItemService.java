@@ -16,7 +16,7 @@ import java.util.Optional;
  * @author Amila Viduranga
  */
 @Service
-public class ItemService implements PriceCalculations{
+public class ItemService implements IntItemService{
     @Autowired
     ItemRepository repository;
 

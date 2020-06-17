@@ -5,6 +5,7 @@ import com.assessment.api.dtos.PriceCalculationResponseDTO;
 import com.assessment.api.exceptions.RecordNotFoundException;
 import com.assessment.api.models.Item;
 import com.assessment.api.models.TotalPrice;
+import com.assessment.api.services.IntItemService;
 import com.assessment.api.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -23,7 +24,7 @@ import java.util.List;
 @RequestMapping("/items")
 public class ItemController {
     @Autowired
-    ItemService service;
+    IntItemService service;
 
     /*
      * This endpoint will return all the items that available in system.
